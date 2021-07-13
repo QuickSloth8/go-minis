@@ -1,3 +1,11 @@
+/*
+A dedicated channel (stopchan) for signaling stop, and
+another channel (stoppedchan) to wait for the goroutine stoppage.
+
+P.S.: for multiple goroutines, it would be better to use
+sync.WaitGroup to wait for all goroutines stoppage.
+*/
+
 package main
 
 import (
