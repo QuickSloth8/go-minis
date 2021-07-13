@@ -1,6 +1,8 @@
 package main
 
-import "log"
+import (
+	"log"
+)
 
 // Returns a channel that produces numbers incrementally
 // starting from 0
