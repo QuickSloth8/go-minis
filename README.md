@@ -1,2 +1,5 @@
 # go-minis
-Mini Golang programs, and useful programming patterns
+Mini Golang programs, and useful Golang patterns.
+
+
+All contributions & suggestions are appreciated :)
