@@ -7,10 +7,14 @@ package main
 
 import (
 	"fmt"
-	aPkg "gominis/types-and-interfaces/interface-implementation/implement-multi-interfaces/a"
-	bPkg "gominis/types-and-interfaces/interface-implementation/implement-multi-interfaces/b"
+	aPkg "gominis/a"
+	bPkg "gominis/b"
 	"io"
 )
+
+type notImplementedI interface {
+	Foo()
+}
 
 type myWriter struct {
 }
@@ -23,7 +27,11 @@ func (w myWriter) Write(p []byte) (n int, err error) {
 }
 
 func main() {
-	var _ aPkg.Writer = (*myWriter)(nil) // Verify that *myWriter implements aPkg.Writer
-	var _ bPkg.Writer = (*myWriter)(nil) // Verify that *myWriter implements bPkg.Writer
-	var _ io.Writer = (*myWriter)(nil)   // verify that *myWriter implements io.Writer
+	var _ aPkg.Writer = (*myWriter)(nil) // Verify that *myWriter implements a.Writer
+	fmt.Println("myWriter implements a.Writer")
+	var _ bPkg.Writer = (*myWriter)(nil) // Verify that *myWriter implements b.Writer
+	fmt.Println("myWriter implements b.Writer")
+	var _ io.Writer = (*myWriter)(nil) // verify that *myWriter implements io.Writer
+	fmt.Println("myWriter implements io.Writer")
+	// var _ notImplementedI = (*myWriter)(nil) // ERROR - cannot use (*myWriter)(nil) (type *myWriter) as type notImplementedI in assignment
 }

@@ -5,7 +5,7 @@ package main
 
 import (
 	"fmt"
-	"gominis/types/type-assertions/example-1/my_types"
+	"gominis/my_types"
 	"reflect"
 )
 
