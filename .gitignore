@@ -1,2 +1,9 @@
-/.vscode
+# OS related
+.DS_Store
+
+# editors
+**/.vscode
+**/.idea
+
 **/__debug_bin
+
