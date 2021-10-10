@@ -1,3 +1,10 @@
+/*
+Demonstrates how to use a channel to send values,
+and stop when there are no more values (when chan is stopped).
+
+The channel is initialized and stopped the same
+function that starts the goroutine.
+*/
 package main
 
 import (
@@ -7,27 +14,28 @@ import (
 )
 
 // NOTE: if the function had the following definition:
-// GenerateNumbersRange(start int, end int) (numbers_chan chan int, err error)
-// Then there will be a bug, and the programs would deadlock.
+// GenerateNumbersRange(start int, end int) (numbers_chan chan int, err error),
+// then there will be a bug, and the program would deadlock.
 // The reason is, declaring a named return: numbers_chan
-// (still don't have the exact explanation)
+// (still don't have the exact explanation).
+
 func GenerateNumbersRange(start int, end int) (chan int, error) {
 	if start >= end {
 		err := errors.New("start should be smaller than end")
 		return nil, err
 	}
 
-	numbers_chan := make(chan int)
+	numbersChan := make(chan int)
 
 	go func() {
-		defer close(numbers_chan)
+		defer close(numbersChan)
 		for i := start; i < end; i++ {
-			log.Println(`pushing ` + strconv.Itoa(i))
-			numbers_chan <- i
+			log.Println(`pushing `, strconv.Itoa(i))
+			numbersChan <- i
 		}
 	}()
 
-	return numbers_chan, nil
+	return numbersChan, nil
 
 }
 
