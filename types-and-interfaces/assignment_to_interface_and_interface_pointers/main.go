@@ -1,3 +1,8 @@
+/*
+Demonstrates the behavior variables, of specific
+interface/interface pointer types.
+Notice the special case of *Interface1 type.
+*/
 package main
 
 import "fmt"

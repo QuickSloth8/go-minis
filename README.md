@@ -1,6 +1,5 @@
 # go-minis
-Mini Golang programs, and useful Golang patterns.
-
+Mini Go programs, and useful Go patterns.
 
 All contributions & suggestions are appreciated :)
 
@@ -10,4 +9,6 @@ All contributions & suggestions are appreciated :)
 * recieve only channels (<-chan)
 * example of my limiter
 * example of getting on a closed channel
+* returning stuff in defer (like errors)
+* recovering from errors
 * 

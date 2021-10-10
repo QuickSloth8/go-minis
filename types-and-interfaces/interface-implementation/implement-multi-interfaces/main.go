@@ -1,6 +1,6 @@
 /*
-Programs demonstrates how a structure can implement multiple interfaces,
-based solely on its methods
+Demonstrates how a structure can implement multiple interfaces, and
+that it can be verified based solely on its methods.
 */
 
 package main
