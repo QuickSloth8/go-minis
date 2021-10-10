@@ -4,10 +4,12 @@ import (
 	"log"
 )
 
-// Returns a channel that produces numbers incrementally
-// starting from 0
+// GenerateNumbersInBackground Returns a channel that produces numbers incrementally
+// starting from 0.
 // To stop the underlying goroutine, send a number on the
-// returned channel, or close it
+// returned channel, or close it.
+// Note: in order for this to work, the size of the
+// channel buffer should be zero.
 func GenerateNumbersInBackground() chan int {
 	c := make(chan int)
 
@@ -35,8 +37,10 @@ func main() {
 	}
 
 	log.Println("closing channel")
-	close(numbers)
-	/* log.Println(<-numbers) // fatal error: all goroutines are asleep - deadlock! */
-	log.Println("Done")
+	numbers <- 0
+	// Another option, is to close the channel with `close(numbers)`
 
+	/* log.Println(<-numbers) // fatal error: all goroutines are asleep - deadlock! */
+
+	log.Println("Done")
 }
