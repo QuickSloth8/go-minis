@@ -1,3 +1,8 @@
+/*
+Demonstrating interruptible goroutines,
+using the package github.com/matryer/runner.
+*/
+
 package main
 
 import (
