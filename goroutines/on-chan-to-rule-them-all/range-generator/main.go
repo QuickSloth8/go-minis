@@ -1,9 +1,10 @@
 /*
 Demonstrates how to use a channel to send values,
-and stop when there are no more values (when chan is stopped).
+and stop when there are no more values (when chan is closed).
 
-The channel is initialized and stopped the same
-function that starts the goroutine.
+The channel is opened and closed in the same
+function, which also makes it accessible to its
+child goroutines, as an outer scope variable.
 */
 package main
 
