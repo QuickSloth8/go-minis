@@ -1,6 +1,6 @@
 /*
-stopping goroutines with a dedicated chan, and waiting for
-graceful termination with sync.WaitGroup.
+stopping multiple goroutines with a dedicated chan, and waiting
+for graceful termination with sync.WaitGroup.
 
 P.S.: added some extra features like randomness and timeouts
 to imitate the behavior of web services
@@ -25,13 +25,13 @@ func RandomDuration() time.Duration {
 
 }
 
-func foo(i int, stopchan chan bool) {
+func foo(i int, stopChan chan bool) {
 	for {
 		select {
 		default:
 			log.Println(`I'm routine no. ` + strconv.Itoa(i))
 			time.Sleep(RandomDuration())
-		case <-stopchan:
+		case <-stopChan:
 			// stop logic
 			return
 		}
@@ -39,26 +39,26 @@ func foo(i int, stopchan chan bool) {
 }
 
 func wrapper(wg *sync.WaitGroup, num_of_goroutines int, stop_after time.Duration) {
-	stopchan := make(chan bool)
+	stopChan := make(chan bool)
 
 	for i := 1; i <= num_of_goroutines; i++ {
-		wg.Add(1) // signal new foo instance
-		go func(i int) {
+		wg.Add(1)                // signal new foo instance
+		go func(routineId int) { // important note: passing loop variables are required, for value preservation
 			defer wg.Done() // signal end of foo
-			foo(i, stopchan)
+			foo(routineId, stopChan)
 		}(i)
 	}
 	time.Sleep(stop_after) // request goroutines termination after ...
-	close(stopchan)
+	close(stopChan)
 }
 
 func main() {
 	var wg sync.WaitGroup
 
-	num_of_goroutines := 5
-	stop_after := 5 * time.Second
+	numOfGoroutines := 5
+	stopAfter := 5 * time.Second
 
-	wrapper(&wg, num_of_goroutines, stop_after)
+	wrapper(&wg, numOfGoroutines, stopAfter)
 
 	wg.Wait()
 	log.Println("DONE!")

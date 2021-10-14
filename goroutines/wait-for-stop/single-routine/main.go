@@ -1,9 +1,10 @@
 /*
-A dedicated channel (stopchan) for signaling stop, and
-another channel (stoppedchan) to wait for the goroutine stoppage.
+A dedicated channel (stopChan) for signaling stop, and
+another channel (stoppedChan) to wait for the goroutine stoppage.
 
 P.S.: for multiple goroutines, it would be better to use
-sync.WaitGroup to wait for all goroutines stoppage.
+sync.WaitGroup to wait for all goroutines stoppage, as demonstrated in
+the other project (under same directory).
 */
 
 package main
@@ -15,14 +16,14 @@ import (
 
 func main() {
 	// a channel to tell it to stop
-	stopchan := make(chan struct{})
+	stopChan := make(chan struct{})
 
 	// a channel to signal that it's stopped
-	stoppedchan := make(chan struct{})
+	stoppedChan := make(chan struct{})
 
 	go func() { // work in background
-		// close the stoppedchan when this func exits
-		defer close(stoppedchan)
+		// close the stoppedChan when this func exits
+		defer close(stoppedChan)
 
 		// do setup work
 
@@ -35,7 +36,7 @@ func main() {
 			default:
 				log.Println("executing default case")
 				time.Sleep(100 * time.Millisecond)
-			case <-stopchan:
+			case <-stopChan:
 				// stop
 				return
 			}
@@ -46,8 +47,8 @@ func main() {
 
 	log.Println("stopping...")
 
-	close(stopchan) // tell it to stop (no need to send a value)
-	<-stoppedchan   // wait for it to stop
+	close(stopChan) // tell it to stop (no need to send a value)
+	<-stoppedChan   // wait for it to stop
 
 	log.Println("Stopped.")
 }
