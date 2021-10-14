@@ -11,4 +11,6 @@ All contributions & suggestions are appreciated :)
 * example of getting on a closed channel
 * returning stuff in defer (like errors)
 * recovering from errors
+* methods on types other than struct
+* new keyword
 * 
