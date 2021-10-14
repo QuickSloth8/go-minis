@@ -1,3 +1,10 @@
+/*
+This program demonstrates an infinite producer,
+that outputs values to a channel for the consumer.
+The responsibility of closing the channel (stopping
+the producer) is on the consumer.
+*/
+
 package main
 
 import (
