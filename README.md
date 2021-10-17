@@ -13,4 +13,5 @@ All contributions & suggestions are appreciated :)
 * recovering from errors
 * methods on types other than struct
 * new keyword
+* const map
 * 
