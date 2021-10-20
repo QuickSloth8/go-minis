@@ -14,4 +14,6 @@ All contributions & suggestions are appreciated :)
 * methods on types other than struct
 * new keyword
 * const map
+* distinctions in defer: passing var OR using var from parent func scope
+* error shadowing: named err error in func definition & redeclared err error in if statement that returns (also use defer to show true value with prints in caling func)
 * 
