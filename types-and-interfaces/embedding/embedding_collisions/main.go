@@ -1,8 +1,8 @@
 /*
-Demonstrates the behaviour on collisions between embedded structs.
+Demonstrates the behaviour on collisions between embedded types.
 
-In case of matching method/variable named, the embedded struct's type should
-be explicitly declared.
+In case of matching method/variable named, the embedded type should
+be explicitly stated.
 
 A note about similar case variations:
 You could also test similar cases, where you embed pointers, or mix
