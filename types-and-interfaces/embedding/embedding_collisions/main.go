@@ -3,6 +3,15 @@ Demonstrates the behaviour on collisions between embedded structs.
 
 In case of matching method/variable named, the embedded struct's type should
 be explicitly declared.
+
+A note about similar case variations:
+You could also test similar cases, where you embed pointers, or mix
+pointers with normal embedding.
+Also, you can try matching method name between two types, but where one takes a pointer,
+and the other a value.
+
+But in all these cases, the compiler still throws an error, because of the ambiguity,
+caused by the matching method name.
 */
 
 package main
