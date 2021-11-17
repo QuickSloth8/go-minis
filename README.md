@@ -21,6 +21,7 @@ All contributions & suggestions are appreciated :)
 * demonstrate how global vars initialization happens before init funcs
 * go slice tricks (https://ueokande.github.io/go-slice-tricks/)
 * intentional garbage collection
+* workers pool (multiple ways)
 * 
 
 ## Kinda unrelated TODOs
