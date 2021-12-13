@@ -23,7 +23,6 @@ All contributions & suggestions are appreciated :)
 * intentional garbage collection
 * workers pool (multiple ways)
 * an example of how one interface variable can be assigned to another interface variable
-* complete data-race examples
 * 
 
 ## Kinda unrelated TODOs
