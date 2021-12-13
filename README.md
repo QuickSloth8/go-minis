@@ -22,7 +22,6 @@ All contributions & suggestions are appreciated :)
 * go slice tricks (https://ueokande.github.io/go-slice-tricks/)
 * intentional garbage collection
 * workers pool (multiple ways)
-* an example of how one interface variable can be assigned to another interface variable
 * 
 
 ## Kinda unrelated TODOs
