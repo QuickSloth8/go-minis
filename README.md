@@ -12,7 +12,6 @@ All contributions & suggestions are appreciated :)
 * returning stuff in defer (like errors)
 * recovering from errors
 * methods on types other than struct
-* new keyword
 * const map
 * error shadowing: named err error in func definition & redeclared err error in if statement that returns (also use defer to show true value with prints in calling func)
 * switch patterns (https://yourbasic.org/golang/switch-statement/)
